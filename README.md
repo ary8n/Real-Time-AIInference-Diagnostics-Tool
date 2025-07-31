@@ -1,6 +1,5 @@
-# AI Inference Diagnostic tool
-
-This project is a real-time diagnostics pipeline for image classification models, designed for robust and transparent deployment in embedded AI systems (like edge cameras, robotics, and IoT devices).
+# Real-Time AI Inference Diagnostics Tool
+This project is a real-time diagnostics pipeline for image classification models, designed for robust and transparent deployment in embedded AI systems such as edge cameras, robotics, and IoT devices.
 
 Features
 Image Input:
@@ -26,8 +25,8 @@ Setup
 1. Install Dependencies
 Most dependencies are included in standard Python or Google Colab environments. If not, install using:
 
-bash
 !pip install torch torchvision opencv-python-headless numpy pandas pillow
+
 2. Supported Platforms
 Google Colab:
 Use manual image uploads (Colab cannot access your webcam directly).
@@ -46,11 +45,12 @@ If uncertainty is detected (high entropy or small confidence gap), it saves both
 Local Python (Webcam Mode)
 Replace the image-upload logic with OpenCV webcam streaming:
 
-python
 cap = cv2.VideoCapture(0)
 while True:
     ret, frame = cap.read()
     # ...rest of pipeline
+
+
 The rest of the logic remains the same.
 
 Outputs
@@ -79,8 +79,8 @@ Confidence Gap: Difference in confidence between the top two predictions.
 
 If either exceeds a set threshold, the prediction is flagged as "low-confidence" and logged for further review or retraining.
 
-Example Metadata
-json
+Example Metadata:
+
 {
   "timestamp": "20250801-010101",
   "top_predictions": [
@@ -93,14 +93,10 @@ json
   "flagged": true,
   "frame_file": "flagged_20250801-010101.png"
 }
+
 Customization
 Thresholds: Adjust gap_threshold and entropy_threshold to fit your application's risk tolerance.
 
 Model: Swap ResNet18 for any other PyTorch model as needed.
 
 Deployment: Integrate into robotics/AI edge devices by looping inference and automatically saving logs.
-
-Notes
-For continuous operation in embedded systems, run this as a persistent process, writing flagged events to device storage or cloud as appropriate.
-
-Only standard Python types should be in your metadata dictionary before saving as JSON.
