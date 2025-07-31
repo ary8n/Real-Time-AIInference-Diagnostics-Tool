@@ -1,4 +1,5 @@
-# Real-Time-AIInference-Diagnostics-Tool
+# AI Inference Diagnostic tool
+
 This project is a real-time diagnostics pipeline for image classification models, designed for robust and transparent deployment in embedded AI systems (like edge cameras, robotics, and IoT devices).
 
 Features
